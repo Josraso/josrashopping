@@ -1,0 +1,19 @@
+Josra Shopping Feed (josrashopping)
+Copyright 2026 josra
+
+Este módulo está basado en gshoppingflux 1.8.3 de Dim00z
+(https://github.com/dim00z/gshoppingflux),
+Copyright 2014-2026 Google Shopping Flux Contributors,
+distribuido con la licencia Apache License, Version 2.0 (ver LICENSE.txt).
+
+Cambios de josra respecto al original: nombre y estructura del módulo, asistente de primera
+configuración, pantalla de resumen y diagnóstico, categorías de Google con buscador de la
+taxonomía oficial, feed servido por controlador con regeneración automática, generación
+revisada según la especificación de datos de producto de Google (2026), opción de reiniciar
+el módulo y conexión al servidor de actualizaciones. Se han quitado los feeds de inventario
+local y de reseñas.
+
+La taxonomía de categorías incluida en data/ es la publicada por Google
+(https://www.google.com/basepages/producttype/taxonomy-with-ids.es-ES.txt).
+"Google", "Google Shopping" y "Google Merchant Center" son marcas de Google LLC; este módulo no
+está afiliado a Google.
