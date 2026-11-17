@@ -1,5 +1,8 @@
 # Changelog — Josra Shopping Feed
 
+## 1.0.2 — 2026-11-17
+- Disponibilidad con el formato de siempre: «in stock», «out of stock», «backorder». Google acepta los dos formatos, pero los validadores de feeds y otras plataformas solo admiten este.
+
 ## 1.0.1 — 2026-11-17
 - Categorías de Google: sale el árbol completo, con botones para desplegar cada rama y «Desplegar todo / Plegar todo»; las ramas con algo asignado se abren solas.
 - El número de productos de cada categoría cuenta también los de sus subcategorías (antes las principales salían con 0).

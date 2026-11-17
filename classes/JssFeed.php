@@ -459,7 +459,7 @@ class JssFeed
         $qty = (int) StockAvailable::getQuantityAvailableByProduct($p->id, $ipa, $this->idShop);
         $availabilityDate = '';
         if (!Configuration::get('PS_STOCK_MANAGEMENT') || $qty > 0) {
-            $availability = 'in_stock';
+            $availability = 'in stock';
         } elseif (Product::isAvailableWhenOutOfStock(StockAvailable::outOfStock($p->id, $this->idShop))) {
             // Se vende sin stock: Google lo llama «backorder» y exige la fecha en que estará
             $availability = 'backorder';
@@ -470,7 +470,7 @@ class JssFeed
             }
             $availabilityDate = date('Y-m-d\T12:00O', $ts);
         } else {
-            $availability = 'out_of_stock';
+            $availability = 'out of stock';
             if (!$conf['JSS_OUT_OF_STOCK']) {
                 $this->exclude('out_of_stock');
 
@@ -669,7 +669,7 @@ class JssFeed
             if ($cat && $cat['top'] !== '') {
                 $xml .= $this->tag('custom_label_1', Tools::substr($cat['top'], 0, 100));
             }
-            $xml .= $this->tag('custom_label_2', $availability === 'in_stock' ? 'con stock' : 'sin stock');
+            $xml .= $this->tag('custom_label_2', $availability === 'in stock' ? 'con stock' : 'sin stock');
         }
 
         $xml .= "</item>\n";
