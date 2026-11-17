@@ -847,13 +847,20 @@ class JssAdmin
         $rows = JssCategories::rows($this->idShop);
         $effective = JssCategories::effective($this->idShop, $this->idLang);
         $list = array();
-        foreach (JssCategories::tree($this->idShop, $this->idLang, $wizard ? 1 : 0) as $c) {
+        $tree = JssCategories::tree($this->idShop, $this->idLang);
+        $hasChildren = array();
+        foreach ($tree as $c) {
+            $hasChildren[$c['parent']] = true;
+        }
+        foreach ($tree as $c) {
             $own = isset($rows[$c['id']]) ? $rows[$c['id']] : null;
             $eff = isset($effective[$c['id']]) ? $effective[$c['id']] : null;
             $list[] = array(
                 'id' => $c['id'],
                 'name' => $c['name'],
                 'depth' => $c['depth'],
+                'parent' => $c['parent'],
+                'children' => isset($hasChildren[$c['id']]),
                 'products' => $c['products'],
                 'google' => $own && (int) $own['google_id'] ? JssTaxonomy::label((int) $own['google_id'], $iso) : '',
                 'inherited' => (!$own || !(int) $own['google_id']) && $eff && $eff['google_id'] ? JssTaxonomy::label($eff['google_id'], $iso) : '',
@@ -870,6 +877,8 @@ class JssAdmin
             'jss_form_url' => $wizard ? $this->url(array('jss_wizard' => 1, 'jss_step' => $step)) : $this->url(array('jss_view' => 'categories')),
             'jss_ajax_url' => $this->url(array('jss_ajax' => 'taxonomy')),
             'jss_all_url' => $this->url(array('jss_view' => 'categories')),
+            'jss_tax_help' => 'https://support.google.com/merchants/answer/6324436?hl=es',
+            'jss_tax_file' => 'https://www.google.com/basepages/producttype/taxonomy-with-ids.es-ES.txt',
             'jss_genders' => array('' => '—', 'male' => 'Hombre', 'female' => 'Mujer', 'unisex' => 'Unisex'),
             'jss_ages' => array('' => '—', 'adult' => 'Adulto', 'kids' => 'Niños', 'toddler' => 'Niños pequeños', 'infant' => 'Bebés', 'newborn' => 'Recién nacidos'),
         ));

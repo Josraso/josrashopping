@@ -2,7 +2,7 @@
 <module>
     <name>josrashopping</name>
     <displayName><![CDATA[Josra Shopping Feed]]></displayName>
-    <version><![CDATA[1.0.0]]></version>
+    <version><![CDATA[1.0.1]]></version>
     <description><![CDATA[Feed de productos para Google Merchant Center (Google Shopping), con asistente de configuración y diagnóstico.]]></description>
     <author><![CDATA[josra]]></author>
     <tab><![CDATA[advertising_marketing]]></tab>
